@@ -1,14 +1,16 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Great Journeys of Leo`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Kiet Tran`,
+      summary: `who lives and works in Ho Chi Minh City with big dreams.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `Great Journeys of Leo`,
+    siteUrl: `https://me.tranletuankiet.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `tuankiet1708`,
+      facebook: `tuankiet1708`,
+      linkedin: `tuankiet1708`
     },
   },
   plugins: [
