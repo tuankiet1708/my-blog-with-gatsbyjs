@@ -62,10 +62,14 @@ const BlogPostTemplate = ({
 }
 
 export const Head = ({ data: { markdownRemark: post } }) => {
+  const { ogimage } = post.frontmatter
+  const ogImagePath = ogimage?.childImageSharp?.fixed?.src || ""
+
   return (
     <Seo
       title={post.frontmatter.title}
       description={post.frontmatter.description || post.excerpt}
+      image={ogImagePath}
     />
   )
 }
@@ -91,6 +95,13 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        ogimage {
+          childImageSharp {
+            fixed {
+              src
+            }
+          }
+        }
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

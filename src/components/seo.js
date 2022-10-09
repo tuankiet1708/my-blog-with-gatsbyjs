@@ -8,8 +8,9 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import defaultOpenGraphImage from "../../content/assets/opengraph-default.jpg"
 
-const Seo = ({ description, lang, title, children }) => {
+const Seo = ({ description, lang, title, image, children }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -17,6 +18,7 @@ const Seo = ({ description, lang, title, children }) => {
           siteMetadata {
             title
             description
+            siteUrl
             social {
               twitter
             }
@@ -28,6 +30,7 @@ const Seo = ({ description, lang, title, children }) => {
 
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
+  const ogImageUrl = site.siteMetadata.siteUrl + ( image || defaultOpenGraphImage )
 
   return (
     <>
@@ -35,6 +38,7 @@ const Seo = ({ description, lang, title, children }) => {
       <meta name="description" content={metaDescription} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
+      <meta property="og:image" content={ogImageUrl} />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary" />
       <meta
@@ -50,10 +54,12 @@ const Seo = ({ description, lang, title, children }) => {
 
 Seo.defaultProps = {
   description: ``,
+  image: ``,
 }
 
 Seo.propTypes = {
   description: PropTypes.string,
+  image: PropTypes.string,
   title: PropTypes.string.isRequired,
 }
 
