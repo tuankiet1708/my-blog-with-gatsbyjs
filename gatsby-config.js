@@ -120,5 +120,14 @@ module.exports = {
         icon: `src/images/leo-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Nunito`
+        ],
+        display: 'swap'
+      }
+    }
   ],
 }
