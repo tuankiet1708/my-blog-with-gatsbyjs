@@ -8,6 +8,13 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faFacebook,
+  faLinkedin,
+  faTwitter,
+  faGithub
+} from '@fortawesome/free-brands-svg-icons'
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -19,7 +26,10 @@ const Bio = () => {
             summary
           }
           social {
-            twitter
+            twitter,
+            facebook,
+            linkedin,
+            github
           }
         }
       }
@@ -36,18 +46,30 @@ const Bio = () => {
         className="bio-avatar"
         layout="fixed"
         formats={["auto", "webp", "avif"]}
-        src="../images/profile-pic.png"
-        width={50}
-        height={50}
+        src="../images/my-profile.jpg"
+        width={86}
+        height={86}
         quality={95}
         alt="Profile picture"
       />
       {author?.name && (
         <p>
           Written by <strong>{author.name}</strong> {author?.summary || null}
-          {` `}
+          <br/>
+          <a href={`https://facebook.com/${social?.facebook || ``}`}>
+            <FontAwesomeIcon icon={faFacebook} size="2x" color="#0C8EF1"/>
+          </a>
+          &nbsp;&nbsp;&nbsp;
+          <a href={`https://www.linkedin.com/in/${social?.linkedin || ``}`}>
+            <FontAwesomeIcon icon={faLinkedin} size="2x" color="#0966C2"/>
+          </a>
+          &nbsp;&nbsp;&nbsp;
           <a href={`https://twitter.com/${social?.twitter || ``}`}>
-            You should follow them on Twitter
+            <FontAwesomeIcon icon={faTwitter} size="2x" color="#1C9BEF"/>
+          </a>
+          &nbsp;&nbsp;&nbsp;
+          <a href={`https://github.com/${social?.github || ``}`}>
+            <FontAwesomeIcon icon={faGithub} size="2x" color=""/>
           </a>
         </p>
       )}

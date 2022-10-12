@@ -1,19 +1,21 @@
 module.exports = {
   siteMetadata: {
-    title: `Great Journeys of Leo`,
+    title: `Leo Loves Coding`,
     author: {
-      name: `Kiet Tran`,
+      name: `Kiet Tran (Leo Loves Coding)`,
       summary: `who lives and works in Ho Chi Minh City with big dreams.`,
     },
-    description: `Great Journeys of Leo`,
+    description: `Leo Loves Coding`,
     siteUrl: `https://me.tranletuankiet.com/`,
     social: {
       twitter: `tuankiet1708`,
       facebook: `tuankiet1708`,
-      linkedin: `tuankiet1708`
+      linkedin: `tuankiet1708`,
+      github: `tuankiet1708`
     },
   },
   plugins: [
+    `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -101,7 +103,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "Great Journeys of Leo RSS Feed",
+            title: "Leo Loves Coding RSS Feed",
           },
         ],
       },
@@ -109,7 +111,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Great Journeys of Leo Blog`,
+        name: `Leo Loves Coding Blog`,
         short_name: `Blog of Leo`,
         start_url: `/`,
         background_color: `#ffffff`,
@@ -128,6 +130,19 @@ module.exports = {
         ],
         display: 'swap'
       }
-    }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // The property ID; the tracking code won't be generated without it
+        trackingId: "G-N78EFZRX6Q",
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: false,
+        // Delays sending pageview hits on route update (in milliseconds)
+        pageTransitionDelay: 0,
+        // Defers execution of google analytics script after page load
+        defer: false,
+      },
+    },
   ],
 }
